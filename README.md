@@ -1,6 +1,6 @@
 # Session Stealer (Cross-site Scripting)
 
-Using the JavaScript payload found below will result in a AJAX POST request containing the current URL (including variables) and Cookie(s) (if available).
+Using the JavaScript payload found below will result in a XHR POST request containing the current URL (including variables) and Cookie(s) (if available).
 
 The `data.php` file will create or append the data received to `output.txt`.
 
