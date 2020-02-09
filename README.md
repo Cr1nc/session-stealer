@@ -2,6 +2,8 @@
 
 Using the JavaScript payload found below will result in a XHR POST request containing the current URL (including variables) and Cookie(s) (if available).
 
+As the following payload does not process the XHR response, it will report the data regardless of the Cross-Origin Resource Sharing (CORS) configuration.
+
 The `data.php` file will create or append the data received to `output.txt`.
 
 Data can be read directly from `output.txt` or using the included `output.php` file to process a cleaner output.
